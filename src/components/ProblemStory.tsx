@@ -1,5 +1,5 @@
 import { lazy, Suspense, useMemo } from 'react';
-import { ArrowRight, ArrowUpRight, Compass, Droplets, Gauge, MapPin, Ruler, Waves } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Compass, Droplets, Film, Gauge, MapPin, Ruler, Waves } from 'lucide-react';
 import { laBocaSolution, LA_BOCA_SOURCES as sources } from '../data/laBoca';
 import { fmt } from '../math/numericalMethods';
 import { Latex } from './Latex';
@@ -22,7 +22,7 @@ export default function ProblemStory({ onTryCase }: { onTryCase: () => void }) {
     </header>
 
     <div className="story-body-layout">
-      <nav className="story-index" aria-label="Contenido del artículo"><p>En esta historia</p><a href="#el-reto">Por qué medir la entrada</a><a href="#modelo-3d">Dónde medimos el caudal</a><a href="#los-metodos">Cómo lo calculamos</a><a href="#del-caudal-al-aporte">Del caudal al aporte</a><a href="#el-lugar">El lugar real</a><a href="#probar-caso">Llevarlo al laboratorio</a></nav>
+      <nav className="story-index" aria-label="Contenido del artículo"><p>En esta historia</p><a href="#el-reto">Por qué medir la entrada</a><a href="#modelo-3d">Dónde medimos el caudal</a><a href="#los-metodos">Cómo lo calculamos</a><a href="#del-caudal-al-aporte">Del caudal al aporte</a><a href="#video-resumen">Cápsula en video</a><a href="#el-lugar">El lugar real</a><a href="#probar-caso">Llevarlo al laboratorio</a></nav>
       <div className="story-reading">
         <section id="el-reto" className="story-section"><div className="story-section-heading"><span className="story-symbol"><Waves size={22} /></span><h2>Medir la entrada ayuda a planear el abastecimiento.</h2></div><p>Es una necesidad real: el 27 de junio de 2022, el Gobierno de Nuevo León informó que La Boca estaba por debajo del nivel de su toma y que instalaría bombas para recuperar el abastecimiento en el sur de la ciudad. <a href={sources.historicalContext} target="_blank" rel="noreferrer">Ver el antecedente oficial de 2022.</a></p><p>Para evaluar la recuperación de una presa se necesita cuantificar el agua que recibe. Medir el caudal de sus cauces de entrada aporta una parte de esa información.</p>
           <dl className="story-purpose-list"><div><dt><Droplets size={19} />Cuantificar las aportaciones</dt><dd>Con mediciones a lo largo del tiempo, estimar cuánto volumen aporta cada cauce al embalse.</dd></div><div><dt><Ruler size={19} />Apoyar el balance de agua</dt><dd>Comparar las entradas con las extracciones y las pérdidas para evaluar el cambio de almacenamiento.</dd></div><div><dt><Gauge size={19} />Vigilar cambios de caudal</dt><dd>Repetir los aforos permite identificar aumentos que deben evaluarse junto con niveles y pronósticos.</dd></div></dl>
@@ -43,6 +43,36 @@ export default function ProblemStory({ onTryCase }: { onTryCase: () => void }) {
         <section id="del-caudal-al-aporte" className="story-section story-contribution"><h2>Del caudal al agua que llega.</h2><p>Si el caudal del ejemplo se mantuviera constante durante 10 minutos, este cauce aportaría:</p><div className="story-contribution-value"><Latex math={`${fmt(s.dischargeQ * 600, 2)}\\,\\mathrm{m}^3`} /><span>en 10 minutos, bajo esa suposición</span></div><Formula math={`V_{\\text{aporte}}\\approx Q\\,\\Delta t=(${fmt(s.dischargeQ)})(600)\\approx${fmt(s.dischargeQ * 600, 2)}\\,\\mathrm{m}^3`} /><p className="story-caption">Volumen aportado por este cauce; no equivale al aumento neto del almacenamiento.</p><details className="story-boundary"><summary>Qué falta para evaluar toda la presa</summary><p>Se necesitan los caudales de los demás afluentes y su variación en el tiempo, el almacenamiento inicial, las extracciones, los desfogues, la lluvia directa y las pérdidas, como la evaporación. Si el caudal cambia, el volumen se obtiene integrando <Latex math="Q(t)" /> en el tiempo.</p><p>La alerta de inundación y las decisiones de operación requieren además niveles, pronósticos y modelos hidráulicos. Álveo demuestra el aforo de una sección; no realiza esas evaluaciones.</p><a href={sources.waterBudget} target="_blank" rel="noreferrer">Cómo se relacionan entradas, salidas y almacenamiento <ArrowUpRight size={13} /></a></details></section>
       </div>
     </div>
+
+    <section id="video-resumen" className="story-video-section" aria-labelledby="video-title">
+      <div className="story-video-card">
+        <div className="story-video-info">
+          <p className="story-small-label"><Film size={15} style={{ display: 'inline', verticalAlign: '-2px', marginRight: '6px' }} /> Extra audiovisual</p>
+          <h2 id="video-title">El problema y la solución en 70 segundos.</h2>
+          <p>
+            Cápsula explicativa animada con código: el antecedente histórico de la presa La Boca en junio de 2022, el reto del lecho irregular bajo el agua, la interpolación continua con Lagrange, la integración numérica con Romberg y la estimación del caudal resultante.
+          </p>
+          <ul className="story-video-highlights">
+            <li><strong>Caso didáctico:</strong> 5 sondeos en 20 m de ancho y velocidad media de 2.4 m/s</li>
+            <li><strong>Matemática aplicada:</strong> Reconstrucción de <Latex math="P_4(x)" /> e integración <Latex math="A \approx 67.33\,\mathrm{m}^2" /></li>
+            <li><strong>Animado con Remotion:</strong> Sincronización palabra a palabra con locución</li>
+          </ul>
+        </div>
+        <div className="story-video-player-container">
+          <video
+            className="story-video-element"
+            controls
+            playsInline
+            preload="metadata"
+            poster="./story/alveo-portada.png"
+            aria-label="Cápsula en video: ¿Cuánta agua entra a La Boca?"
+          >
+            <source src="./story/alveo-reel.mp4" type="video/mp4" />
+            Tu navegador no admite la reproducción de video HTML5.
+          </video>
+        </div>
+      </div>
+    </section>
 
     <section id="el-lugar" className="story-place-section" aria-labelledby="place-title"><div className="story-place-copy"><p className="story-location"><Compass size={16} /> Contexto local</p><h2 id="place-title">Aquí empieza la pregunta.</h2><p>La presa Rodrigo Gómez, conocida como La Boca, está en Santiago, Nuevo León. El mapa sitúa el embalse; la sección de 20 metros del ejemplo es hipotética.</p><a className="story-text-link" href={sources.map} target="_blank" rel="noreferrer">Abrir en Google Maps <ArrowUpRight size={16} /></a><figure className="story-shore-photo"><img src="./story/la-boca-orilla.jpg" width="1280" height="960" alt="Orilla de la presa La Boca, con embarcaciones y la Sierra Madre al fondo" loading="lazy" /><figcaption><PhotoCredit source={sources.shore} /></figcaption></figure></div><div className="story-map"><iframe title="Google Maps: presa La Boca, Santiago, Nuevo León" src={sources.embed} loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen /><div className="story-map-caption"><MapPin size={16} /><span>Presa La Boca<br /><small>Santiago, Nuevo León, México</small></span><a href={sources.map} target="_blank" rel="noreferrer" aria-label="Abrir el mapa de La Boca en Google Maps"><ArrowUpRight size={18} /></a></div></div></section>
 

@@ -2,6 +2,7 @@ node_modules/
 dist/
 *.local
 artifacts/
+becario-reels/
 .env
 .env.*
 .DS_Store
