@@ -1,0 +1,54 @@
+.river-3d { border: 1px solid #CFDFE7; background: #EAF2F5; border-radius: 13px; overflow: hidden; }
+.three-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .85rem 1rem; background: #FFFFFFD9; border-bottom: 1px solid #D9E5EB; }
+.three-stage-tabs { display: flex; gap: .3rem; }
+.three-stage-tabs button { display: inline-flex; align-items: center; gap: .45rem; min-height: 38px; background: transparent; border: 0; border-radius: 7px; padding: .45rem .75rem; font-size: .78rem; color: var(--muted); }
+.three-stage-tabs button > span { display: grid; place-items: center; width: 19px; height: 19px; border-radius: 50%; background: #E3ECF1; font-size: .65rem; }
+.three-stage-tabs button[aria-pressed="true"] { color: var(--blue); background: #DFEEF7; font-weight: 600; }
+.three-stage-tabs button[aria-pressed="true"] > span { background: var(--blue); color: white; }
+.three-badge { display: inline-flex; align-items: center; gap: .4rem; color: var(--muted); font-size: .72rem; }
+.three-stage { position: relative; height: clamp(350px,40vw,480px); }
+.three-host { position: absolute; inset: 0; }
+.three-host canvas { display: block; width: 100%; height: 100%; cursor: grab; border-radius: 0; }
+.three-host canvas:active { cursor: grabbing; }
+.three-host canvas:focus-visible { outline-offset: -5px; }
+.three-fallback { display: block; position: absolute; inset: 0; margin: auto; width: 90%; height: 85%; pointer-events: none; }
+.three-fallback text { font: 15px var(--font-sans); fill: var(--muted); }
+.three-legend { position: absolute; top: 1rem; left: 1.25rem; display: flex; gap: .9rem; flex-wrap: wrap; font-size: .67rem; color: #486575; pointer-events: none; }
+.three-legend > span { display: inline-flex; align-items: center; gap: .3rem; }
+.three-legend > span::before { content: ''; width: 9px; height: 9px; border-radius: 2px; background: #BAAC91; }
+.three-legend .legend-water::before { background: #6FB7CE; }
+.three-legend .legend-profile::before { background: #086B9C; height: 2px; width: 13px; }
+.three-legend .legend-trapezoids::before { background: #DBA650; }
+.three-camera-tools { position: absolute; bottom: .9rem; right: 1rem; display: flex; gap: .2rem; padding: .25rem; background: #FFFFFFE6; border: 1px solid #D2E0E7; border-radius: 8px; }
+.three-camera-tools button { display: grid; place-items: center; width: 35px; height: 35px; background: transparent; border: 0; border-radius: 5px; color: var(--blue); }
+.three-camera-tools button:hover { background: #E4EFF5; }
+.three-controls { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .7rem; padding: .75rem 1rem; border-top: 1px solid #D4E1E8; background: #FFFFFFE6; }
+.three-view-tabs { display: flex; gap: .25rem; }
+.three-view-tabs button { border: 1px solid transparent; background: transparent; padding: .4rem .7rem; border-radius: 6px; color: var(--muted); font-size: .73rem; min-height: 34px; }
+.three-view-tabs button[aria-pressed="true"] { color: var(--blue); background: #EDF5F9; border-color: #D7E6EF; }
+.three-controls label { display: flex; align-items: center; gap: .6rem; font-size: .73rem; color: var(--muted); }
+.three-controls select { min-height: 36px; font-size: .75rem; }
+.three-interaction-hint { color: var(--muted); font-size: .69rem; }
+.three-data { padding: .8rem 1.1rem; border-top: 1px solid #DCE6EC; background: white; color: var(--blue); font-size: .87rem; display: flex; justify-content: center; flex-wrap: wrap; gap: .6rem 2rem; overflow-x: auto; }
+.three-data > .latex-inline { white-space: nowrap; }
+@media (max-width: 760px) {
+  .three-toolbar { padding: .65rem; gap: .35rem; }
+  .three-stage-tabs { gap: .15rem; }
+  .three-stage-tabs button { min-height: 42px; padding: .4rem .5rem; font-size: .71rem; gap: .3rem; }
+  .three-badge { font-size: .64rem; gap: .25rem; }
+  .three-badge svg { display: none; }
+  .three-stage { height: 330px; }
+  .three-legend { left: .8rem; right: .8rem; top: .75rem; gap: .6rem; font-size: .62rem; }
+  .three-camera-tools { bottom: .65rem; right: .65rem; }
+  .three-camera-tools button { width: 39px; height: 39px; }
+  .three-controls { padding: .7rem; gap: .65rem; }
+  .three-view-tabs button { min-height: 40px; font-size: .7rem; }
+  .three-controls label { font-size: .7rem; flex-wrap: wrap; }
+  .three-controls select { min-height: 42px; }
+  .three-data { justify-content: flex-start; padding: .75rem; font-size: .76rem; }
+  .three-data > .latex-inline { max-width: none; }
+}
+@media (max-width: 350px) {
+  .three-stage-tabs button { padding: .35rem .35rem; font-size: .67rem; }
+  .three-stage-tabs button > span { width: 16px; height: 16px; font-size: .6rem; }
+}
