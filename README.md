@@ -65,7 +65,4 @@ Las pruebas verifican los tres ejemplos, integrales conocidas de grados 2, 4 y 6
 Los ejemplos son didácticos; no se presentan como mediciones oficiales. La integral analítica es el valor de referencia del polinomio interpolado. La comparación con Romberg verifica el error de integración del modelo, no la exactitud física del perfil entre sondeos. Para el caudal se supone que la velocidad media introducida representa la sección integrada.
 
 ## Recursos
-
-- Ilustraciones locales de [Kitbitz](https://kitbitz.art/).
-- Adaptación local de [Magic Card de Magic UI](https://magicui.design/docs/components/magic-card), con iluminación tenue al mover el puntero y sin animaciones continuas.
 - React, TypeScript, Vite y KaTeX.
